@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import Constructor from './pages/Constructor/index';
+import Projects from './pages/Projects/index';
+import BottomNavigation from './components/BottomNavigation';
+import { useTelegramNavigation } from './hooks/useTelegramNavigation';
 import './App.css';
+
+function AppContent() {
+  useTelegramNavigation();
+
+  return (
+    <div className="App min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+      <div className="pb-16">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/constructor" element={<Constructor />} />
+          <Route path="/projects" element={<Projects />} />
+        </Routes>
+      </div>
+      <BottomNavigation />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

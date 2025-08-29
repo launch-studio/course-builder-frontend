@@ -1,46 +1,88 @@
-# Getting Started with Create React App
+# Course Builder Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Веб-приложение для создания контента с интеграцией Telegram Web App.
 
-## Available Scripts
+## Особенности
 
-In the project directory, you can run:
+- 🎯 **Конструктор контента** - создание различных типов контента
+- 📱 **Telegram Web App интеграция** - нативная навигация в Telegram
+- 🎨 **Современный UI** - стеклянный дизайн с анимациями
+- 📊 **Управление проектами** - сохранение и редактирование проектов
+- 🎭 **Шаблоны** - готовые шаблоны для разных ниш
 
-### `npm start`
+## Telegram Web App Навигация
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Приложение автоматически интегрируется с Telegram Web App API:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Главная страница**: кнопка "Закрыть" (закрывает Web App)
+- **Другие страницы**: кнопка "Назад" (возврат на предыдущую страницу)
+- **Тактильная обратная связь**: вибрация при навигации
+- **Адаптивная тема**: автоматическое определение темы Telegram
 
-### `npm test`
+## Установка и запуск
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+# Установка зависимостей
+npm install
 
-### `npm run build`
+# Запуск в режиме разработки
+npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Сборка для продакшена
+npm run build
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Запуск тестов
+npm test
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Структура проекта
 
-### `npm run eject`
+```
+src/
+├── components/          # React компоненты
+│   ├── Blocks/         # Блоки контента
+│   ├── Constructor/    # Компоненты конструктора
+│   ├── Preview/        # Предварительный просмотр
+│   └── Templates/      # Шаблоны
+├── hooks/              # React хуки
+│   └── useTelegramNavigation.ts
+├── pages/              # Страницы приложения
+│   ├── Dashboard/      # Главная страница
+│   ├── Constructor/    # Конструктор контента
+│   └── Projects/       # Управление проектами
+├── services/           # Сервисы
+│   ├── telegram/       # Telegram API
+│   └── ai/            # AI сервисы
+└── types/             # TypeScript типы
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Telegram Web App API
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Приложение использует следующие методы Telegram Web App API:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `WebApp.ready()` - инициализация
+- `WebApp.expand()` - развертывание на весь экран
+- `WebApp.close()` - закрытие приложения
+- `WebApp.BackButton` - управление кнопкой "Назад"
+- `WebApp.MainButton` - управление главной кнопкой
+- `WebApp.HapticFeedback` - тактильная обратная связь
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Разработка
 
-## Learn More
+### Добавление новой страницы
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Создайте компонент в `src/pages/`
+2. Добавьте маршрут в `src/App.tsx`
+3. Навигация автоматически настроится через `useTelegramNavigation`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Стилизация
+
+Используются Tailwind CSS классы:
+- `glass-card` - стеклянный эффект
+- `button-primary` - основная кнопка
+- `input-styled` - стилизованный инпут
+- `badge-*` - бейджи разных типов
+
+## Лицензия
+
+MIT
